@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMEN Calibre 01 — часы, которые разбираются прокруткой</title>
+<meta name="description" content="Демо премиального лендинга: механические часы в живом 3D прямо в браузере. Прокрутите или потяните ползунок — часы разберутся на детали, механизм при этом идет.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%2310182e' stroke='%23c9a24a' stroke-width='3'/%3E%3Cpath d='M16 8v8l5 3' stroke='%23f1d796' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="stage.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/addons/" } }
+</script>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.explode{height:auto}.stage{position:relative}</style></noscript>
+</head>
+<body>
+
+<nav class="top" id="top">
+  <div class="brand">LUMEN</div>
+  <div class="links">
+    <a href="#explode">Разборка</a>
+    <a href="#features">Как сделано</a>
+    <a href="#cta">Заказать такой сайт</a>
+  </div>
+</nav>
+
+<section class="explode" id="explode">
+  <div class="stage">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="grid-overlay"></div>
+      <div class="noise"></div>
+    </div>
+
+    <canvas id="watch-canvas" aria-label="3D-модель механических часов LUMEN Calibre 01"></canvas>
+    <div id="part-labels" aria-hidden="true"></div>
+    <div class="fallback">Ваш браузер не поддерживает WebGL — 3D-сцена недоступна.</div>
+
+    <div class="stage-copy intro">
+      <div class="eyebrow">LUMEN · Calibre 01</div>
+      <h1 class="disp">Механика,<span class="grad">которую видно</span></h1>
+      <p class="sub">Живой 3D прямо в браузере: колеса в зацеплении, баланс тикает,
+        стрелки показывают ваше время. Прокрутите — часы разберутся на детали.</p>
+      <div class="hint"><span class="bar"></span>Прокрутите или тяните ползунок</div>
+    </div>
+
+    <div class="stage-copy outro">
+      <h2 class="disp">Ни видео,<br>ни рендера</h2>
+      <p>Каждая деталь собрана кодом и считается в реальном времени —
+        поэтому ее можно разобрать, повернуть и завести.</p>
+    </div>
+
+    <label class="assembly">
+      <span>Собрано</span>
+      <input type="range" id="explode-range" min="0" max="1000" value="0" aria-label="Степень разборки часов">
+      <span>Разобрано</span>
+      <output id="explode-value">0%</output>
+    </label>
+  </div>
+</section>
+
+<div class="demo-badge">Демо-концепт · бренд LUMEN вымышлен</div>
+
+<main>
+
+  <section class="bento-section" id="features">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Как это сделано</div>
+        <h2 class="disp">Не ролик, а живая модель</h2>
+        <p class="lead">Сцена собирается в браузере из кода на Three.js — поэтому она
+          реагирует на прокрутку, курсор и время, а весит меньше одного видео-ролика.</p>
+      </div>
+      <div class="bento reveal stagger" id="bento">
+        <div class="bento-item big">
+          <div class="bi-icon">✦</div>
+          <h3>Настоящий механизм, а не картинка</h3>
+          <p>Пять колес с рассчитанным зацеплением: зуб всегда входит во впадину соседа.
+            Спуск тикает пять раз в секунду, баланс качается в такт, ротор автоподзавода
+            ходит сам — как в настоящем калибре.</p>
+        </div>
+        <div class="bento-item">
+          <div class="bi-icon">⇅</div>
+          <h3>Разборка прокруткой</h3>
+          <p>Прокрутка — это ползунок сборки: детали расходятся волной и подписываются.</p>
+        </div>
+        <div class="bento-item">
+          <div class="bi-icon">◷</div>
+          <h3>Ваше время на стрелках</h3>
+          <p>Стрелки показывают текущее время посетителя, секундная идет шагами.</p>
+        </div>
+        <div class="bento-item">
+          <div class="bi-icon">◐</div>
+          <h3>Металл и стекло</h3>
+          <p>Женевские полосы на мостах, перляж на платине, «солнечные лучи» на циферблате,
+            сапфир с отражениями.</p>
+        </div>
+        <div class="bento-item">
+          <div class="bi-icon">↗</div>
+          <h3>Легче видео</h3>
+          <p>3D-движок и модель — около 250 КБ при передаче. Видео такого качества весило бы
+            в десятки раз больше и не умело бы реагировать.</p>
+        </div>
+        <div class="bento-item wide">
+          <div class="bi-icon">▤</div>
+          <h3>Под ваш товар</h3>
+          <p>Двигатель, кофемашина, кроссовок, мебель: собираю модель в коде или беру вашу
+            3D-модель и делаю такую же разборку, вращение или конфигуратор.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="specs">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">В цифрах</div>
+        <h2 class="disp">Что внутри этой страницы</h2>
+        <p class="lead">Цифры — про саму сцену выше, а не про вымышленные часы.</p>
+      </div>
+      <div class="stats reveal stagger">
+        <div class="stat"><div class="value" data-count="0" data-count-parts>0</div><div class="label">деталей в 3D-сцене</div></div>
+        <div class="stat"><div class="value" data-count="5">0</div><div class="label">колес в зацеплении</div></div>
+        <div class="stat"><div class="value" data-count="11">0</div><div class="label">слоев разборки</div></div>
+        <div class="stat"><div class="value" data-count="0">0</div><div class="label">видео и готовых рендеров</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="cta">
+    <div class="wrap">
+      <h2 class="disp reveal">Покажите свой товар<br>так же</h2>
+      <p class="reveal">Разборка, вращение, конфигуратор цвета — живой 3D на сайте удерживает
+        внимание дольше любой фотографии. Сделаю под ваш товар и структуру сайта.</p>
+      <a class="btn reveal" href="https://t.me/VladisavSSS" target="_blank" rel="noopener">Написать в Telegram →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:10px">
+    <span>LUMEN — демо-концепт, бренд и характеристики вымышлены</span>
+    <span>Портфолио-пример · 2026</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script type="module" src="watch3d.js"></script>
+</body>
+</html>
